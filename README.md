@@ -1,2 +1,99 @@
-# HR-Analytics-Dashboard-Power-BI
+ HR-Analytics-Dashboard-Power-BI
 This HR Analytics project uses Power BI to analyze employee attrition, workforce demographics, salary distribution, and performance. It includes data cleaning, data modeling, DAX measures, and interactive dashboards across three pages. The project delivers actionable insights to support data-driven HR decisions and improve employee retention.
+
+# DAX Documentation — HR Analytics Project
+
+## 1. Total Employees
+
+**Business Purpose:** Measures the number of unique employees in the dataset.
+
+```dax
+**DAX Measure:**
+
+Total Employees =
+DISTINCTCOUNT(HR_Analytics[EmpID])
+```
+---
+
+## 2. Employees Left
+
+**Business Purpose:** Measures the number of unique employees whose attrition status is Yes.
+
+**DAX Measure:**
+
+Employees Left =
+CALCULATE(
+    DISTINCTCOUNT(HR_Analytics[EmpID]),
+    HR_Analytics[Attrition] = "Yes"
+)
+```
+## 3. Attrition Rate
+
+**Business Purpose:** Measures the percentage of employees who left relative to the defined employee population.
+
+**DAX Measure:**
+
+```dax
+Attrition Rate =
+DIVIDE(
+    [Employees Left],
+    [Total Employees],
+    0
+)
+```
+
+---
+
+## 4. Average Monthly Salary
+
+**Business Purpose:** Calculates the average recorded monthly income of employees.
+
+**DAX Measure:**
+```dax
+Average Monthly Salary =
+AVERAGE(HR_Analytics[MonthlyIncome])
+```
+
+## 5. Total Monthly Payroll
+
+**Business Purpose:** Calculates the sum of recorded monthly employee incomes.
+
+**DAX Measure:**
+
+Total Monthly Payroll =
+SUM(HR_Analytics[MonthlyIncome])
+```
+
+## 6. Average Salary Hike
+
+**Business Purpose:** Calculates the average recorded salary hike percentage.
+
+**DAX Measure:**
+
+```dax
+Average Salary Hike =
+AVERAGE(HR_Analytics[PercentSalaryHike])
+```
+
+
+## 7. Average Job Satisfaction
+
+**Business Purpose:** Measures the average recorded job satisfaction rating.
+
+**DAX Measure:**
+
+```dax
+Average Job Satisfaction =
+AVERAGE(HR_Analytics[JobSatisfaction])
+```
+
+## 8. Average Work Experience
+
+**Business Purpose:** Measures the average total work experience recorded for employees.
+
+**DAX Measure:**
+
+```dax
+Average Work Experience =
+AVERAGE(HR_Analytics[TotalWorkingYears])
+```
