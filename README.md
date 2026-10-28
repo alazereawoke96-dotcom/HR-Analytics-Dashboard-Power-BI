@@ -39,7 +39,7 @@ CALCULATE(
     DISTINCTCOUNT(HR_Analytics[EmpID]),
     HR_Analytics[Attrition] = "Yes"
 )
-```
+``` 
 ## 3. Attrition Rate
 
 **Business Purpose:** Measures the percentage of employees who left relative to the defined employee population.
